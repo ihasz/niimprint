@@ -131,13 +131,13 @@ class SerialTransport(BaseTransport):
             if len(detected_devices) > 1:
                 error = "Multiple supported devices detected, please select a specific one:\n"
                 for devices in detected_devices:
-                    error += f"\t{devices["device"]}: {devices["model"]} (Serial No. {devices["serial_number"]})\n"
+                    error += f"\t{devices['device']}: {devices['model']} (Serial No. {devices['serial_number']})\n"
                 raise RuntimeError(error)
 
             if self._model == "auto":
                 self._model = detected_devices[0]["model"].lower()
             elif self._model != detected_devices[0]["model"].lower():
-                logging.warning(f"Detected model '{detected_devices[0]["model"]}', but {self._model} was specified. Using model set on command line.")
+                logging.warning(f"Detected model '{detected_devices[0]['model']}', but {self._model} was specified. Using model set on command line.")
 
             self._port = detected_devices[0]["device"]
             self._serial_number = detected_devices[0]["serial_number"]
