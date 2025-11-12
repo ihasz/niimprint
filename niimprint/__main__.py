@@ -4,8 +4,8 @@ import re
 import click
 from PIL import Image
 
-from printer import BluetoothTransport, PrinterClient, SerialTransport
-from printer_models import supported_models
+from .printer import BluetoothTransport, PrinterClient, SerialTransport
+from .printer_models import supported_models
 
 
 

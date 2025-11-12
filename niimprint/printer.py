@@ -10,8 +10,8 @@ import serial
 from PIL import Image, ImageOps
 from serial.tools.list_ports import comports, grep as comports_grep
 
-from packet import NiimbotPacket
-from printer_models import supported_models
+from .packet import NiimbotPacket
+from .printer_models import supported_models
 
 
 class InfoEnum(enum.IntEnum):
@@ -93,7 +93,7 @@ class SerialTransport(BaseTransport):
         elif self._port == "auto":
             com_ports = comports()
         else:
-            com_ports = list(comports_grep(port))
+            com_ports = list(comports_grep(self._port))
 
         if len(com_ports) == 0:
             raise RuntimeError("No serial ports detected")
