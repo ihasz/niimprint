@@ -158,10 +158,10 @@ class PrinterClient:
         self.set_label_density(density)
         self.set_label_type(1)
         self.start_print()
-        # self.allow_print_clear()  # Something unsupported in protocol decoding (B21)
+        self.allow_print_clear()  # Something unsupported in protocol decoding (B21)
         self.start_page_print()
         self.set_dimension(image.height, image.width)
-        # self.set_quantity(1)  # Same thing (B21)
+        self.set_quantity(1)  # Same thing (B21)
         for pkt in self._encode_image(image):
             self._send(pkt)
         self.end_page_print()
